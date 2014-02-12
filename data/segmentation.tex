@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{grffile} % for filenames such as foo.bar.pdf (instead of foo.pdf)
+\usepackage{mediabb} % for computing bounding box of pdf files
+\usepackage[strings]{underscore} % just for filenames with underscores
+
+
+\begin{document}
+
+\def\w{.08\linewidth}
+
+\def\subfig#1#2{
+  \parbox{\w}{\center\small%
+  \texttt{#2}
+  \includegraphics[width=\linewidth]{#1}}}
+
+
+\newcount\K
+\def\putfigure#1{%
+  \K=0 \loop\ifnum\K<9 \advance\K by1 % for K=1 to9
+  \subfig{#1step0.\number\K.pdf}{0.\number\K} % exec this line
+  \repeat % end for
+  }
+
+
+\begin{center}
+
+prob_AXF128_120x120_60\\
+\putfigure{data/prob_AXF128_120x120_60}
+
+\bigskip
+
+prob_BVF047_120x120_60\\
+\putfigure{data/prob_BVF047_120x120_60}
+
+\bigskip
+
+prob_C3F334_120x120_60\\
+\putfigure{data/prob_C3F334_120x120_60}
+
+\end{center}
+ 
+
+ 
+
+
+\end{document}
